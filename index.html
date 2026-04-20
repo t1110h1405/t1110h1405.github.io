@@ -6,33 +6,31 @@
 <title>Takeoff Ink — Eコマース販売事業</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink: #1a1a18;
-  --ink-soft: #3d3d38;
-  --ink-muted: #7a7a72;
-  --paper: #f5f3ee;
-  --paper-warm: #ede9e0;
-  --accent: #2a5c45;
-  --accent-light: #e8f0ec;
-  --rule: rgba(26,26,24,0.12);
-  --font-serif: 'Shippori Mincho', serif;
-  --font-sans: 'Noto Sans JP', sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --black: #111110;
+  --gray-dark: #444440;
+  --gray: #888880;
+  --gray-light: #c8c8c0;
+  --border: #e0dfd8;
+  --bg: #fafaf8;
+  --white: #ffffff;
+  --green: #2a5c45;
+  --serif: 'Shippori Mincho', serif;
+  --sans: 'Noto Sans JP', sans-serif;
+  --mono: 'DM Mono', monospace;
 }
 
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--black);
+  font-family: var(--sans);
   font-weight: 300;
   line-height: 1.8;
-  overflow-x: hidden;
 }
 
 /* NAV */
@@ -40,405 +38,288 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 1.25rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(245,243,238,0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--rule);
+  padding: 1rem 2.5rem;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
 }
-
-.nav-brand {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: var(--ink);
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--black);
   text-decoration: none;
 }
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
   font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--ink-muted);
+  color: var(--gray);
   text-decoration: none;
+  letter-spacing: 0.06em;
   transition: color 0.2s;
 }
-
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: var(--black); }
 
 /* HERO */
 .hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 100vh;
-  padding: 120px 2rem 80px;
+  padding-top: 60px;
+}
+.hero-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
+  padding: 5rem 3rem 5rem 2.5rem;
+  border-right: 1px solid var(--border);
 }
-
-.hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  color: var(--accent);
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--green);
   margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.2s forwards;
 }
-
 .hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(42px, 8vw, 80px);
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
   font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.4s forwards;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
 }
-
-.hero-title span {
-  display: block;
-  color: var(--ink-muted);
-  font-size: 0.55em;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  margin-top: 0.5rem;
-}
-
-.hero-desc {
-  font-size: 15px;
-  color: var(--ink-soft);
-  max-width: 520px;
+.hero-sub {
+  font-size: 13px;
+  color: var(--gray-dark);
   line-height: 1.9;
-  margin-bottom: 3rem;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.6s forwards;
+  margin-bottom: 2.5rem;
+  max-width: 380px;
 }
-
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.8s forwards;
-}
-
+.hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.75rem;
-  font-size: 13px;
-  font-family: var(--font-sans);
-  font-weight: 400;
+  padding: 0.65rem 1.5rem;
+  font-size: 12px;
+  font-family: var(--sans);
   letter-spacing: 0.06em;
   text-decoration: none;
   border-radius: 2px;
   transition: all 0.2s;
 }
+.btn-dark { background: var(--black); color: var(--white); }
+.btn-dark:hover { background: var(--green); }
+.btn-outline { border: 1px solid var(--border); color: var(--gray-dark); }
+.btn-outline:hover { border-color: var(--black); color: var(--black); }
 
-.btn-primary {
-  background: var(--ink);
-  color: var(--paper);
+.hero-right {
+  position: relative;
+  overflow: hidden;
 }
-.btn-primary:hover { background: var(--accent); }
-
-.btn-secondary {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--rule);
-}
-.btn-secondary:hover { border-color: var(--ink); }
-
-.hero-rule {
-  position: absolute;
-  bottom: 40px;
-  left: 2rem;
-  right: 2rem;
-  height: 1px;
-  background: var(--rule);
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  opacity: 0.75;
+  display: block;
 }
 
-/* SECTIONS */
-section {
-  padding: 100px 2rem;
-  max-width: 900px;
+/* SECTION BASE */
+.section {
+  max-width: 960px;
   margin: 0 auto;
+  padding: 5rem 2.5rem;
 }
-
-.section-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.5rem;
+.section-head {
+  display: flex;
   align-items: baseline;
-  margin-bottom: 4rem;
-  border-top: 1px solid var(--rule);
-  padding-top: 2rem;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
 }
-
 .section-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gray-light);
   letter-spacing: 0.1em;
 }
-
 .section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 4vw, 32px);
+  font-family: var(--serif);
+  font-size: clamp(20px, 3vw, 28px);
   font-weight: 500;
-  letter-spacing: -0.01em;
 }
 
 /* ABOUT */
-.about-grid {
+.about-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem 4rem;
+  gap: 4rem;
+  align-items: start;
 }
-
-.about-item {}
-
-.about-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-.about-value {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.8;
-}
-
-.about-value strong {
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  filter: grayscale(100%);
+  opacity: 0.8;
   display: block;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 0.25rem;
-  font-family: var(--font-serif);
 }
-
-.feature-list {
-  list-style: none;
-  margin-top: 2rem;
+.about-img-caption {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gray-light);
+  margin-top: 0.5rem;
 }
-
-.feature-list li {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--rule);
-  font-size: 14px;
-  color: var(--ink-soft);
-  display: flex;
+.about-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
   gap: 1rem;
-  align-items: flex-start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
 }
-
-.feature-list li::before {
-  content: '—';
-  color: var(--accent);
-  font-family: var(--font-mono);
-  flex-shrink: 0;
-  margin-top: 2px;
+.about-row:first-child { border-top: 1px solid var(--border); }
+.about-key {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  padding-top: 3px;
 }
+.about-val { color: var(--gray-dark); line-height: 1.7; }
+.about-val a { color: var(--green); text-decoration: none; }
+.about-val a:hover { text-decoration: underline; }
 
-/* CATEGORIES */
-.cat-grid {
+/* FEATURES */
+.features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  margin-top: 2rem;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 3rem;
 }
-
-.cat-item {
-  background: var(--paper);
-  padding: 1.5rem;
+.feature-item {
+  background: var(--bg);
+  padding: 1.75rem 1.5rem;
 }
-
-.cat-name {
-  font-family: var(--font-serif);
+.feature-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gray-light);
+  margin-bottom: 0.75rem;
+}
+.feature-title {
+  font-family: var(--serif);
   font-size: 15px;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
-
-.cat-desc {
+.feature-desc {
   font-size: 12px;
-  color: var(--ink-muted);
-  line-height: 1.7;
+  color: var(--gray-dark);
+  line-height: 1.8;
 }
 
 /* PROFILE */
 .profile-layout {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 240px 1fr;
   gap: 4rem;
   align-items: start;
 }
-
-.profile-aside {}
-
-.profile-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--accent-light);
-  border: 1px solid rgba(42,92,69,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
+.profile-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  display: block;
 }
-
 .profile-name {
-  font-family: var(--font-serif);
-  font-size: 20px;
+  font-family: var(--serif);
+  font-size: 26px;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
-
-.profile-role {
-  font-size: 12px;
-  font-family: var(--font-mono);
-  color: var(--accent);
-  letter-spacing: 0.08em;
+.profile-name-en {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
 }
-
-.profile-body {}
-
-.profile-section {
-  margin-bottom: 2.5rem;
+.profile-row {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
 }
-
-.profile-section-title {
-  font-family: var(--font-mono);
+.profile-label {
+  font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: 0.15em;
-  color: var(--ink-muted);
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--rule);
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
 }
-
-.profile-section p {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.9;
-}
+.profile-text { color: var(--gray-dark); line-height: 1.85; }
 
 /* CONTACT */
 .contact-box {
-  background: var(--paper-warm);
-  border: 1px solid var(--rule);
-  padding: 3rem;
+  border: 1px solid var(--border);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
 }
-
-.contact-info-label {
-  font-family: var(--font-mono);
+.contact-col { padding: 2.5rem; }
+.contact-col + .contact-col { border-left: 1px solid var(--border); }
+.contact-label {
+  font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: 0.15em;
-  color: var(--ink-muted);
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
 }
-
-.contact-info-value {
-  font-size: 15px;
-  color: var(--ink);
-  font-weight: 400;
+.contact-val {
+  font-size: 14px;
+  color: var(--black);
+  margin-bottom: 1.5rem;
   word-break: break-all;
 }
-
-.contact-info-value a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.contact-note {
-  font-size: 12px;
-  color: var(--ink-muted);
-  margin-top: 0.5rem;
-  line-height: 1.7;
-}
-
-.contact-right {
-  border-left: 1px solid var(--rule);
-  padding-left: 3rem;
-}
+.contact-val a { color: var(--green); text-decoration: none; }
+.contact-note { font-size: 12px; color: var(--gray); line-height: 1.8; }
 
 /* FOOTER */
 footer {
-  border-top: 1px solid var(--rule);
-  padding: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
+.footer-logo { font-family: var(--mono); font-size: 11px; color: var(--gray); }
+.footer-copy { font-family: var(--mono); font-size: 11px; color: var(--gray-light); }
 
-.footer-brand {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-muted);
-}
-
-.footer-copy {
-  font-size: 11px;
-  color: var(--ink-muted);
-  font-family: var(--font-mono);
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s, transform 0.7s;
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* FADE */
+.fade { opacity: 0; transform: translateY(16px); transition: opacity 0.7s, transform 0.7s; }
+.fade.in { opacity: 1; transform: none; }
 
 /* RESPONSIVE */
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   nav { padding: 1rem; }
   .nav-links { gap: 1.25rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .cat-grid { grid-template-columns: 1fr; }
-  .profile-layout { grid-template-columns: 1fr; gap: 2rem; }
-  .contact-box { grid-template-columns: 1fr; padding: 2rem; }
-  .contact-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { height: 260px; }
+  .hero-left { padding: 4rem 1.5rem 3rem; }
+  .about-layout, .profile-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .features-grid { grid-template-columns: 1fr; }
+  .contact-box { grid-template-columns: 1fr; }
+  .contact-col + .contact-col { border-left: none; border-top: 1px solid var(--border); }
+  .section { padding: 4rem 1.5rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 </style>
@@ -446,7 +327,7 @@ footer {
 <body>
 
 <nav>
-  <a href="#" class="nav-brand">TAKEOFF INK</a>
+  <a href="#" class="nav-logo">TAKEOFF INK</a>
   <ul class="nav-links">
     <li><a href="#about">事業概要</a></li>
     <li><a href="#profile">代表者</a></li>
@@ -454,151 +335,155 @@ footer {
   </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <p class="hero-eyebrow">E-COMMERCE / AMAZON.CO.JP</p>
-  <h1 class="hero-title">
-    Takeoff Ink
-    <span>日用品・化粧品のEコマース販売事業</span>
-  </h1>
-  <p class="hero-desc">
-    Amazon.co.jpを主要販路として、ドラッグストア系商品（化粧品・衛生用品・日用品）の仕入れ・販売を行っています。市場データに基づく独自のリサーチ手法により、安定した商品供給と収益確保を実現しています。
-  </p>
-  <div class="hero-cta">
-    <a href="#about" class="btn btn-primary">事業概要を見る</a>
-    <a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener" class="btn btn-secondary">Amazonショップ</a>
+  <div class="hero-left">
+    <p class="hero-tag">E-COMMERCE · AMAZON.CO.JP · EST. 2025</p>
+    <h1 class="hero-title">日用品・化粧品の<br>Eコマース販売</h1>
+    <p class="hero-sub">Amazon.co.jpを主要販路として、ドラッグストア系商品の仕入れ・販売を行っています。</p>
+    <div class="hero-btns">
+      <a href="#about" class="btn btn-dark">事業概要を見る</a>
+      <a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener" class="btn btn-outline">Amazonショップ →</a>
+    </div>
   </div>
-  <div class="hero-rule"></div>
+  <div class="hero-right">
+    <img
+      class="hero-img"
+      src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=80&fit=crop"
+      alt="ドラッグストアの陳列棚"
+    >
+  </div>
 </div>
 
-<section id="about">
-  <div class="section-header">
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-head">
     <span class="section-num">01</span>
     <h2 class="section-title">事業概要</h2>
   </div>
-
-  <div class="about-grid fade-up">
-    <div class="about-item">
-      <div class="about-label">事業形態</div>
-      <div class="about-value">
-        <strong>個人事業主</strong>
-        Eコマース販売（物販）
-      </div>
+  <div class="about-layout fade">
+    <div>
+      <img
+        class="about-img"
+        src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=700&q=80&fit=crop"
+        alt="化粧品・日用品の陳列"
+        loading="lazy"
+      >
+      <p class="about-img-caption">Photo: Unsplash (CC0)</p>
     </div>
-    <div class="about-item">
-      <div class="about-label">販売プラットフォーム</div>
-      <div class="about-value">
-        <strong>Amazon.co.jp</strong>
-        2025年より出品開始
+    <div>
+      <div class="about-row">
+        <span class="about-key">事業形態</span>
+        <span class="about-val">個人事業主（Eコマース物販）</span>
       </div>
-    </div>
-    <div class="about-item">
-      <div class="about-label">主な取扱商品</div>
-      <div class="about-value">
-        <strong>ドラッグストア系商品</strong>
-        化粧品・衛生用品・日用消耗品
+      <div class="about-row">
+        <span class="about-key">販売先</span>
+        <span class="about-val">
+          Amazon.co.jp（2025年開始）<br>
+          <a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener">ショップページ →</a>
+        </span>
       </div>
-    </div>
-    <div class="about-item">
-      <div class="about-label">配送方式</div>
-      <div class="about-value">
-        <strong>自己発送（FBM）</strong>
-        柔軟な在庫・配送管理
+      <div class="about-row">
+        <span class="about-key">取扱商品</span>
+        <span class="about-val">化粧品・衛生用品・日用消耗品<br>（ドラッグストア系商品全般）</span>
+      </div>
+      <div class="about-row">
+        <span class="about-key">配送方式</span>
+        <span class="about-val">自己発送（FBM）</span>
+      </div>
+      <div class="about-row">
+        <span class="about-key">所在地</span>
+        <span class="about-val">大阪府</span>
       </div>
     </div>
   </div>
 
-  <ul class="feature-list fade-up">
-    <li>市場データと需要動向の分析に基づいた商品選定により、売れ筋商品を効率的に特定</li>
-    <li>競合の少ないニッチ商品への集中投資で、安定したマージンを確保</li>
-    <li>継続的な商品リサーチと品揃えの最適化により、売上の拡大を推進</li>
-    <li>自己発送体制による柔軟な在庫調整と、顧客満足度の高い配送品質を維持</li>
-  </ul>
-
-  <div class="cat-grid fade-up">
-    <div class="cat-item">
-      <div class="cat-name">化粧品</div>
-      <div class="cat-desc">スキンケア・ヘアケア・メイクアップ用品など</div>
+  <div class="features-grid fade">
+    <div class="feature-item">
+      <div class="feature-num">— 01</div>
+      <div class="feature-title">データに基づく商品選定</div>
+      <div class="feature-desc">市場データと需要動向を分析し、売れ筋商品を効率的に特定しています。</div>
     </div>
-    <div class="cat-item">
-      <div class="cat-name">衛生用品</div>
-      <div class="cat-desc">マスク・消毒液・衛生雑貨など</div>
+    <div class="feature-item">
+      <div class="feature-num">— 02</div>
+      <div class="feature-title">ニッチ商品への集中</div>
+      <div class="feature-desc">競合の少ない商品に絞り込み、安定したマージンを確保します。</div>
     </div>
-    <div class="cat-item">
-      <div class="cat-name">日用品・消耗品</div>
-      <div class="cat-desc">生活消耗財・ドラッグストア取扱全般</div>
+    <div class="feature-item">
+      <div class="feature-num">— 03</div>
+      <div class="feature-title">柔軟な在庫管理</div>
+      <div class="feature-desc">自己発送体制で在庫を柔軟に調整し、丁寧な配送を維持します。</div>
     </div>
   </div>
 </section>
 
-<section id="profile">
-  <div class="section-header">
+<!-- PROFILE -->
+<section id="profile" class="section" style="border-top: 1px solid var(--border);">
+  <div class="section-head">
     <span class="section-num">02</span>
     <h2 class="section-title">代表者プロフィール</h2>
   </div>
-
-  <div class="profile-layout fade-up">
-    <div class="profile-aside">
-      <div class="profile-avatar">林</div>
-      <div class="profile-name">林 健信</div>
-      <div class="profile-role">HAYASHI TAKENOBU</div>
+  <div class="profile-layout fade">
+    <div>
+      <img
+        class="profile-img"
+        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80&fit=crop"
+        alt="ビジネスイメージ"
+        loading="lazy"
+      >
     </div>
-    <div class="profile-body">
-      <div class="profile-section">
-        <div class="profile-section-title">経歴・背景</div>
-        <p>実店舗における日用品・生活消費財の調達・販売経験を経て、市場の広がりと利便性の高さからEコマース分野へ参入。リサーチツールや市場データを活用した独自手法を確立し、Amazon.co.jpにて安定した販売実績を積み重ねています。</p>
+    <div>
+      <div class="profile-name">林 健信</div>
+      <div class="profile-name-en">HAYASHI TAKENOBU · 個人事業主</div>
+      <div class="profile-row">
+        <div class="profile-label">経歴・背景</div>
+        <div class="profile-text">実店舗での日用品・生活消費財の販売経験を経て、Eコマース分野へ参入。リサーチツールや市場データを活用した独自手法を確立し、Amazon.co.jpにて販売実績を積み重ねています。</div>
       </div>
-      <div class="profile-section">
-        <div class="profile-section-title">事業への想い</div>
-        <p>消費者が本当に必要とする商品を、必要なタイミングで届けることを大切にしています。在庫管理・価格設定・商品選定の各プロセスを丁寧に行うことで、顧客満足と事業の継続的成長を両立させていきます。</p>
+      <div class="profile-row">
+        <div class="profile-label">事業への想い</div>
+        <div class="profile-text">消費者に必要な商品を、必要なタイミングで届けることを大切にしています。丁寧な商品選定と在庫管理で、顧客満足と事業成長を両立させていきます。</div>
       </div>
-      <div class="profile-section">
-        <div class="profile-section-title">今後の展望</div>
-        <p>仕入れ規模の拡大および商品カテゴリの多角化を通じて、事業基盤の強化を図ります。将来的には法人化も視野に入れ、安定した雇用創出にも貢献していきたいと考えています。</p>
+      <div class="profile-row">
+        <div class="profile-label">今後の展望</div>
+        <div class="profile-text">仕入れ規模の拡大と商品カテゴリの多角化を通じて事業基盤を強化し、将来的な法人化も視野に入れています。</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="section-header">
+<!-- CONTACT -->
+<section id="contact" class="section" style="border-top: 1px solid var(--border);">
+  <div class="section-head">
     <span class="section-num">03</span>
     <h2 class="section-title">お問い合わせ</h2>
   </div>
-
-  <div class="contact-box fade-up">
-    <div class="contact-left">
-      <div class="contact-info-label">メールアドレス</div>
-      <div class="contact-info-value">
-        <a href="mailto:t1110h1405@takeoffink.com">t1110h1405@takeoffink.com</a>
-      </div>
-      <p class="contact-note">お問い合わせいただいた内容には、原則2営業日以内にご返信いたします。</p>
+  <div class="contact-box fade">
+    <div class="contact-col">
+      <div class="contact-label">メールアドレス</div>
+      <div class="contact-val"><a href="mailto:t1110h1405@takeoffink.com">t1110h1405@takeoffink.com</a></div>
+      <div class="contact-label">担当者</div>
+      <div class="contact-val">林 健信</div>
+      <p class="contact-note">お問い合わせには原則2営業日以内にご返信いたします。</p>
     </div>
-    <div class="contact-right">
-      <div class="contact-info-label">担当者</div>
-      <div class="contact-info-value" style="margin-bottom:1rem;">林 健信</div>
-      <div class="contact-info-label">Amazonショップ</div>
-      <div class="contact-info-value">
-        <a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener">ショップページを見る →</a>
-      </div>
+    <div class="contact-col">
+      <div class="contact-label">Amazonショップ</div>
+      <div class="contact-val"><a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener">ショップページを見る →</a></div>
+      <div class="contact-label">所在地</div>
+      <div class="contact-val">大阪府</div>
     </div>
   </div>
 </section>
 
 <footer>
-  <span class="footer-brand">TAKEOFF INK</span>
+  <span class="footer-logo">TAKEOFF INK</span>
   <span class="footer-copy">© 2025 林 健信. All rights reserved.</span>
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
