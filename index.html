@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --black: #111110;
   --gray-dark: #444440;
@@ -23,299 +22,90 @@
   --sans: 'Noto Sans JP', sans-serif;
   --mono: 'DM Mono', monospace;
 }
-
 html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--black);
-  font-family: var(--sans);
-  font-weight: 300;
-  line-height: 1.8;
-}
+body { background: var(--bg); color: var(--black); font-family: var(--sans); font-weight: 300; line-height: 1.8; }
 
-/* NAV */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
   padding: 1rem 2.5rem;
-  background: rgba(250,250,248,0.95);
-  backdrop-filter: blur(6px);
+  background: rgba(250,250,248,0.96); backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
-.nav-logo {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--black);
-  text-decoration: none;
-}
+.nav-logo { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--black); text-decoration: none; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-  font-size: 12px;
-  color: var(--gray);
-  text-decoration: none;
-  letter-spacing: 0.06em;
-  transition: color 0.2s;
-}
+.nav-links a { font-size: 12px; color: var(--gray); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
 .nav-links a:hover { color: var(--black); }
 
-/* HERO */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  padding-top: 60px;
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: 60px;
 }
 .hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5rem 3rem 5rem 2.5rem;
-  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 3rem 5rem 2.5rem; border-right: 1px solid var(--border);
 }
-.hero-tag {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: var(--green);
-  margin-bottom: 2rem;
-}
-.hero-title {
-  font-family: var(--serif);
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-}
-.hero-sub {
-  font-size: 13px;
-  color: var(--gray-dark);
-  line-height: 1.9;
-  margin-bottom: 2.5rem;
-  max-width: 380px;
-}
+.hero-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: var(--green); margin-bottom: 2rem; }
+.hero-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); font-weight: 500; line-height: 1.2; margin-bottom: 1.5rem; }
+.hero-sub { font-size: 13px; color: var(--gray-dark); line-height: 1.9; margin-bottom: 2.5rem; max-width: 380px; }
 .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.btn {
-  display: inline-block;
-  padding: 0.65rem 1.5rem;
-  font-size: 12px;
-  font-family: var(--sans);
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  border-radius: 2px;
-  transition: all 0.2s;
-}
+.btn { display: inline-block; padding: 0.65rem 1.5rem; font-size: 12px; font-family: var(--sans); letter-spacing: 0.06em; text-decoration: none; border-radius: 2px; transition: all 0.2s; }
 .btn-dark { background: var(--black); color: var(--white); }
 .btn-dark:hover { background: var(--green); }
 .btn-outline { border: 1px solid var(--border); color: var(--gray-dark); }
 .btn-outline:hover { border-color: var(--black); color: var(--black); }
+.hero-right { position: relative; overflow: hidden; background: #d8d5ce; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%) contrast(1.05); opacity: 0.85; display: block; }
 
-.hero-right {
-  position: relative;
-  overflow: hidden;
-}
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%);
-  opacity: 0.75;
-  display: block;
-}
+.section { max-width: 960px; margin: 0 auto; padding: 5rem 2.5rem; }
+.section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.section-num { font-family: var(--mono); font-size: 10px; color: var(--gray-light); letter-spacing: 0.1em; }
+.section-title { font-family: var(--serif); font-size: clamp(20px, 3vw, 28px); font-weight: 500; }
 
-/* SECTION BASE */
-.section {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 5rem 2.5rem;
-}
-.section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
-}
-.section-num {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--gray-light);
-  letter-spacing: 0.1em;
-}
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(20px, 3vw, 28px);
-  font-weight: 500;
-}
-
-/* ABOUT */
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.about-img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  filter: grayscale(100%);
-  opacity: 0.8;
-  display: block;
-}
-.about-img-caption {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--gray-light);
-  margin-top: 0.5rem;
-}
-.about-row {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: grayscale(70%) contrast(1.05); display: block; }
+.about-img-caption { font-family: var(--mono); font-size: 10px; color: var(--gray-light); margin-top: 0.5rem; }
+.about-row { display: grid; grid-template-columns: 110px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 13px; }
 .about-row:first-child { border-top: 1px solid var(--border); }
-.about-key {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--gray);
-  letter-spacing: 0.08em;
-  padding-top: 3px;
-}
+.about-key { font-family: var(--mono); font-size: 10px; color: var(--gray); letter-spacing: 0.08em; padding-top: 3px; }
 .about-val { color: var(--gray-dark); line-height: 1.7; }
 .about-val a { color: var(--green); text-decoration: none; }
 .about-val a:hover { text-decoration: underline; }
 
-/* FEATURES */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 3rem;
-}
-.feature-item {
-  background: var(--bg);
-  padding: 1.75rem 1.5rem;
-}
-.feature-num {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--gray-light);
-  margin-bottom: 0.75rem;
-}
-.feature-title {
-  font-family: var(--serif);
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-.feature-desc {
-  font-size: 12px;
-  color: var(--gray-dark);
-  line-height: 1.8;
-}
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+.feature-item { background: var(--bg); padding: 1.75rem 1.5rem; }
+.feature-num { font-family: var(--mono); font-size: 10px; color: var(--gray-light); margin-bottom: 0.75rem; }
+.feature-title { font-family: var(--serif); font-size: 15px; font-weight: 500; margin-bottom: 0.5rem; }
+.feature-desc { font-size: 12px; color: var(--gray-dark); line-height: 1.8; }
 
-/* PROFILE */
-.profile-layout {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.profile-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  filter: grayscale(100%);
-  opacity: 0.8;
-  display: block;
-}
-.profile-name {
-  font-family: var(--serif);
-  font-size: 26px;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
-.profile-name-en {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--gray);
-  letter-spacing: 0.1em;
-  margin-bottom: 2rem;
-}
-.profile-row {
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
-.profile-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--gray);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.4rem;
-}
+.profile-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 600px; }
+.profile-name { font-family: var(--serif); font-size: 26px; font-weight: 500; margin-bottom: 0.25rem; }
+.profile-name-en { font-family: var(--mono); font-size: 11px; color: var(--gray); letter-spacing: 0.1em; margin-bottom: 2rem; }
+.profile-row { padding: 1.25rem 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.profile-label { font-family: var(--mono); font-size: 10px; color: var(--gray); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
 .profile-text { color: var(--gray-dark); line-height: 1.85; }
 
-/* CONTACT */
-.contact-box {
-  border: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+.contact-box { border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; }
 .contact-col { padding: 2.5rem; }
 .contact-col + .contact-col { border-left: 1px solid var(--border); }
-.contact-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--gray);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.4rem;
-}
-.contact-val {
-  font-size: 14px;
-  color: var(--black);
-  margin-bottom: 1.5rem;
-  word-break: break-all;
-}
+.contact-label { font-family: var(--mono); font-size: 10px; color: var(--gray); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.contact-val { font-size: 14px; color: var(--black); margin-bottom: 1.5rem; word-break: break-all; }
 .contact-val a { color: var(--green); text-decoration: none; }
 .contact-note { font-size: 12px; color: var(--gray); line-height: 1.8; }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 1.5rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 960px;
-  margin: 0 auto;
-}
+footer { border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; max-width: 960px; margin: 0 auto; }
 .footer-logo { font-family: var(--mono); font-size: 11px; color: var(--gray); }
 .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--gray-light); }
 
-/* FADE */
 .fade { opacity: 0; transform: translateY(16px); transition: opacity 0.7s, transform 0.7s; }
 .fade.in { opacity: 1; transform: none; }
 
-/* RESPONSIVE */
 @media (max-width: 700px) {
   nav { padding: 1rem; }
   .nav-links { gap: 1.25rem; }
   .hero { grid-template-columns: 1fr; }
   .hero-right { height: 260px; }
   .hero-left { padding: 4rem 1.5rem 3rem; }
-  .about-layout, .profile-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .about-layout { grid-template-columns: 1fr; gap: 2rem; }
   .features-grid { grid-template-columns: 1fr; }
   .contact-box { grid-template-columns: 1fr; }
   .contact-col + .contact-col { border-left: none; border-top: 1px solid var(--border); }
@@ -335,7 +125,6 @@ footer {
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <p class="hero-tag">E-COMMERCE · AMAZON.CO.JP · EST. 2025</p>
@@ -347,15 +136,13 @@ footer {
     </div>
   </div>
   <div class="hero-right">
-    <img
-      class="hero-img"
-      src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=80&fit=crop"
-      alt="ドラッグストアの陳列棚"
-    >
+    <!-- 日用品・店舗陳列のフリー画像 (Unsplash, CC0) -->
+    <img class="hero-img"
+      src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80&fit=crop&crop=center"
+      alt="日用品の陳列棚">
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about" class="section">
   <div class="section-head">
     <span class="section-num">01</span>
@@ -363,18 +150,16 @@ footer {
   </div>
   <div class="about-layout fade">
     <div>
-      <img
-        class="about-img"
-        src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=700&q=80&fit=crop"
-        alt="化粧品・日用品の陳列"
-        loading="lazy"
-      >
+      <!-- 化粧品・スキンケア商品のフリー画像 (Unsplash, CC0) -->
+      <img class="about-img"
+        src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=80&fit=crop&crop=center"
+        alt="化粧品・スキンケア商品" loading="lazy">
       <p class="about-img-caption">Photo: Unsplash (CC0)</p>
     </div>
     <div>
       <div class="about-row">
         <span class="about-key">事業形態</span>
-        <span class="about-val">個人事業主（Eコマース物販）</span>
+        <span class="about-val">Eコマース物販</span>
       </div>
       <div class="about-row">
         <span class="about-key">販売先</span>
@@ -393,7 +178,7 @@ footer {
       </div>
       <div class="about-row">
         <span class="about-key">所在地</span>
-        <span class="about-val">大阪府</span>
+        <span class="about-val">大阪府豊中市小曽根1-18-18-2</span>
       </div>
     </div>
   </div>
@@ -417,7 +202,6 @@ footer {
   </div>
 </section>
 
-<!-- PROFILE -->
 <section id="profile" class="section" style="border-top: 1px solid var(--border);">
   <div class="section-head">
     <span class="section-num">02</span>
@@ -425,16 +209,8 @@ footer {
   </div>
   <div class="profile-layout fade">
     <div>
-      <img
-        class="profile-img"
-        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80&fit=crop"
-        alt="ビジネスイメージ"
-        loading="lazy"
-      >
-    </div>
-    <div>
       <div class="profile-name">林 健信</div>
-      <div class="profile-name-en">HAYASHI TAKENOBU · 個人事業主</div>
+      <div class="profile-name-en">HAYASHI TAKENOBU</div>
       <div class="profile-row">
         <div class="profile-label">経歴・背景</div>
         <div class="profile-text">実店舗での日用品・生活消費財の販売経験を経て、Eコマース分野へ参入。リサーチツールや市場データを活用した独自手法を確立し、Amazon.co.jpにて販売実績を積み重ねています。</div>
@@ -451,7 +227,6 @@ footer {
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section" style="border-top: 1px solid var(--border);">
   <div class="section-head">
     <span class="section-num">03</span>
@@ -466,10 +241,10 @@ footer {
       <p class="contact-note">お問い合わせには原則2営業日以内にご返信いたします。</p>
     </div>
     <div class="contact-col">
+      <div class="contact-label">所在地</div>
+      <div class="contact-val">〒561-0881<br>大阪府豊中市小曽根1-18-18-2</div>
       <div class="contact-label">Amazonショップ</div>
       <div class="contact-val"><a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener">ショップページを見る →</a></div>
-      <div class="contact-label">所在地</div>
-      <div class="contact-val">大阪府</div>
     </div>
   </div>
 </section>
