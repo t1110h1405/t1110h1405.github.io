@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Takeoff Ink — Eコマース販売事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1a1a18;
+  --ink-soft: #3d3d38;
+  --ink-muted: #7a7a72;
+  --paper: #f5f3ee;
+  --paper-warm: #ede9e0;
+  --accent: #2a5c45;
+  --accent-light: #e8f0ec;
+  --rule: rgba(26,26,24,0.12);
+  --font-serif: 'Shippori Mincho', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(245,243,238,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding: 120px 2rem 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(42px, 8vw, 80px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s forwards;
+}
+
+.hero-title span {
+  display: block;
+  color: var(--ink-muted);
+  font-size: 0.55em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-top: 0.5rem;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 520px;
+  line-height: 1.9;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-primary:hover { background: var(--accent); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+.btn-secondary:hover { border-color: var(--ink); }
+
+.hero-rule {
+  position: absolute;
+  bottom: 40px;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  margin-bottom: 4rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 2rem;
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 4rem;
+}
+
+.about-item {}
+
+.about-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.about-value {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+.about-value strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+  font-family: var(--font-serif);
+}
+
+.feature-list {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.feature-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.feature-list li::before {
+  content: '—';
+  color: var(--accent);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* CATEGORIES */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 2rem;
+}
+
+.cat-item {
+  background: var(--paper);
+  padding: 1.5rem;
+}
+
+.cat-name {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.cat-desc {
+  font-size: 12px;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+/* PROFILE */
+.profile-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.profile-aside {}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  border: 1px solid rgba(42,92,69,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.profile-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.profile-role {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+.profile-body {}
+
+.profile-section {
+  margin-bottom: 2.5rem;
+}
+
+.profile-section-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.profile-section p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+/* CONTACT */
+.contact-box {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.contact-info-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-value {
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 400;
+  word-break: break-all;
+}
+
+.contact-info-value a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-note {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 0.5rem;
+  line-height: 1.7;
+}
+
+.contact-right {
+  border-left: 1px solid var(--rule);
+  padding-left: 3rem;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  nav { padding: 1rem; }
+  .nav-links { gap: 1.25rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .cat-grid { grid-template-columns: 1fr; }
+  .profile-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-box { grid-template-columns: 1fr; padding: 2rem; }
+  .contact-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">TAKEOFF INK</a>
+  <ul class="nav-links">
+    <li><a href="#about">事業概要</a></li>
+    <li><a href="#profile">代表者</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow">E-COMMERCE / AMAZON.CO.JP</p>
+  <h1 class="hero-title">
+    Takeoff Ink
+    <span>日用品・化粧品のEコマース販売事業</span>
+  </h1>
+  <p class="hero-desc">
+    Amazon.co.jpを主要販路として、ドラッグストア系商品（化粧品・衛生用品・日用品）の仕入れ・販売を行っています。市場データに基づく独自のリサーチ手法により、安定した商品供給と収益確保を実現しています。
+  </p>
+  <div class="hero-cta">
+    <a href="#about" class="btn btn-primary">事業概要を見る</a>
+    <a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener" class="btn btn-secondary">Amazonショップ</a>
+  </div>
+  <div class="hero-rule"></div>
+</div>
+
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">事業概要</h2>
+  </div>
+
+  <div class="about-grid fade-up">
+    <div class="about-item">
+      <div class="about-label">事業形態</div>
+      <div class="about-value">
+        <strong>個人事業主</strong>
+        Eコマース販売（物販）
+      </div>
+    </div>
+    <div class="about-item">
+      <div class="about-label">販売プラットフォーム</div>
+      <div class="about-value">
+        <strong>Amazon.co.jp</strong>
+        2025年より出品開始
+      </div>
+    </div>
+    <div class="about-item">
+      <div class="about-label">主な取扱商品</div>
+      <div class="about-value">
+        <strong>ドラッグストア系商品</strong>
+        化粧品・衛生用品・日用消耗品
+      </div>
+    </div>
+    <div class="about-item">
+      <div class="about-label">配送方式</div>
+      <div class="about-value">
+        <strong>自己発送（FBM）</strong>
+        柔軟な在庫・配送管理
+      </div>
+    </div>
+  </div>
+
+  <ul class="feature-list fade-up">
+    <li>市場データと需要動向の分析に基づいた商品選定により、売れ筋商品を効率的に特定</li>
+    <li>競合の少ないニッチ商品への集中投資で、安定したマージンを確保</li>
+    <li>継続的な商品リサーチと品揃えの最適化により、売上の拡大を推進</li>
+    <li>自己発送体制による柔軟な在庫調整と、顧客満足度の高い配送品質を維持</li>
+  </ul>
+
+  <div class="cat-grid fade-up">
+    <div class="cat-item">
+      <div class="cat-name">化粧品</div>
+      <div class="cat-desc">スキンケア・ヘアケア・メイクアップ用品など</div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-name">衛生用品</div>
+      <div class="cat-desc">マスク・消毒液・衛生雑貨など</div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-name">日用品・消耗品</div>
+      <div class="cat-desc">生活消耗財・ドラッグストア取扱全般</div>
+    </div>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">代表者プロフィール</h2>
+  </div>
+
+  <div class="profile-layout fade-up">
+    <div class="profile-aside">
+      <div class="profile-avatar">林</div>
+      <div class="profile-name">林 健信</div>
+      <div class="profile-role">HAYASHI TAKENOBU</div>
+    </div>
+    <div class="profile-body">
+      <div class="profile-section">
+        <div class="profile-section-title">経歴・背景</div>
+        <p>実店舗における日用品・生活消費財の調達・販売経験を経て、市場の広がりと利便性の高さからEコマース分野へ参入。リサーチツールや市場データを活用した独自手法を確立し、Amazon.co.jpにて安定した販売実績を積み重ねています。</p>
+      </div>
+      <div class="profile-section">
+        <div class="profile-section-title">事業への想い</div>
+        <p>消費者が本当に必要とする商品を、必要なタイミングで届けることを大切にしています。在庫管理・価格設定・商品選定の各プロセスを丁寧に行うことで、顧客満足と事業の継続的成長を両立させていきます。</p>
+      </div>
+      <div class="profile-section">
+        <div class="profile-section-title">今後の展望</div>
+        <p>仕入れ規模の拡大および商品カテゴリの多角化を通じて、事業基盤の強化を図ります。将来的には法人化も視野に入れ、安定した雇用創出にも貢献していきたいと考えています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">お問い合わせ</h2>
+  </div>
+
+  <div class="contact-box fade-up">
+    <div class="contact-left">
+      <div class="contact-info-label">メールアドレス</div>
+      <div class="contact-info-value">
+        <a href="mailto:t1110h1405@takeoffink.com">t1110h1405@takeoffink.com</a>
+      </div>
+      <p class="contact-note">お問い合わせいただいた内容には、原則2営業日以内にご返信いたします。</p>
+    </div>
+    <div class="contact-right">
+      <div class="contact-info-label">担当者</div>
+      <div class="contact-info-value" style="margin-bottom:1rem;">林 健信</div>
+      <div class="contact-info-label">Amazonショップ</div>
+      <div class="contact-info-value">
+        <a href="https://www.amazon.co.jp/b?node=26286483051&ie=UTF8&marketplaceID=A1VC38T7YXB528&me=AP4GEQ48X19JB" target="_blank" rel="noopener">ショップページを見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">TAKEOFF INK</span>
+  <span class="footer-copy">© 2025 林 健信. All rights reserved.</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
